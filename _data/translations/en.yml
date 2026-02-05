@@ -1,0 +1,120 @@
+# =============================================================================
+# ENGLISH TRANSLATIONS
+# =============================================================================
+
+# Navigation
+nav:
+  menu_label: "Menu"
+  items:
+    - name: "Home"
+      url: "/"
+    - name: "Projects"
+      url: "/projects/"
+    - name: "Blog"
+      url: "/blog/"
+    - name: "Resume"
+      url: "/cv/"
+    - name: "Contact"
+      url: "/contact/"
+
+# Homepage
+home:
+  hero:
+    greeting: "Hi, I'm"
+    title: "Noah DAVID"
+    subtitle: "Master's Student in Cybersecurity"
+    description: "Passionate about defensive security, automation and finance."
+    cta_primary: "View my projects"
+    cta_secondary: "Contact me"
+  
+  featured:
+    title: "Featured Projects"
+    subtitle: "A selection of my recent work in cybersecurity and development"
+    view_all: "View all projects"
+
+# Projects Page
+projects:
+  title: "Projects"
+  subtitle: "Discover my work in cybersecurity and development"
+  filter_all: "All"
+  no_projects: "No projects yet."
+  view_project: "View project"
+  github_link: "Source code"
+  back_to_projects: "Back to projects"
+  view_source: "View source"
+  view_demo: "View demo"
+  technologies: "Technologies"
+
+# Blog Page
+blog:
+  title: "Blog"
+  subtitle: "Articles about AI, Cybersecurity, and Finance"
+  filter_all: "All"
+  no_posts: "No articles yet."
+  read_more: "Read more"
+  min_read: "min read"
+
+# CV Page
+cv:
+  title: "Resume"
+  subtitle: "My academic and professional journey"
+  download_button: "Download Resume (PDF)"
+  experience_title: "Experience"
+  education_title: "Education"
+  skills_title: "Skills"
+  certifications_title: "Certifications"
+
+# Contact Page
+contact:
+  title: "Contact"
+  subtitle: "Have a question, professional opportunity, or project? Feel free to reach out."
+  info:
+    title: "Information"
+    email_label: "Email"
+    location_label: "Location"
+    location_value: "France • Switzerland • Worldwide"
+    availability_label: "Availability"
+    availability_value: "Open to opportunities"
+  
+  form:
+    name_label: "Full Name"
+    name_placeholder: "John Doe"
+    email_label: "Email"
+    email_placeholder: "john.doe@example.com"
+    subject_label: "Subject"
+    subject_placeholder: "Select a subject..."
+    subject_options:
+      - value: "job"
+        label: "Job Opportunity"
+      - value: "project"
+        label: "Project Proposal"
+      - value: "question"
+        label: "General Question"
+      - value: "other"
+        label: "Other"
+    message_label: "Message"
+    message_placeholder: "Describe your inquiry..."
+    submit: "Send Message"
+  
+  success:
+    title: "Message Sent!"
+    message: "Thank you for your message. I'll get back to you as soon as possible."
+  
+  error:
+    title: "Error"
+    message: "An error occurred. Please try again or contact me directly via email."
+
+# Footer
+footer:
+  tagline: "Master's Student in Cybersecurity | Passionate about security and innovation"
+  links_title: "Navigation"
+  connect_title: "Connect"
+  rights: "All rights reserved."
+
+# Common
+common:
+  back: "Back"
+  loading: "Loading..."
+  tags: "Tags"
+  date: "Date"
+  share: "Share"

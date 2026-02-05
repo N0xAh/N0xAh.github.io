@@ -1,0 +1,241 @@
+---
+layout: default
+title: Home
+description: Cybersecurity Master's Student Portfolio - Projects, Articles, Resume
+lang: en
+---
+
+{% assign t = site.data.translations.en %}
+
+<section class="section relative overflow-hidden">
+    <div class="container-custom">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div class="space-y-8 text-center lg:text-left">
+                <div class="space-y-4">
+                    <p class="text-cyber-accent font-mono text-lg">{{ t.home.hero.greeting }}</p>
+                    <h1 class="text-gradient">{{ t.home.hero.title }}</h1>
+                    <p class="text-xl md:text-2xl text-gray-400 font-light">{{ t.home.hero.subtitle }}</p>
+                </div>
+                <p class="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">{{ t.home.hero.description }}
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="{{ '/en/projects/' | relative_url }}" class="btn-primary">{{ t.home.hero.cta_primary }}</a>
+                    <a href="{{ '/en/contact/' | relative_url }}" class="btn-secondary">{{ t.home.hero.cta_secondary
+                        }}</a>
+                </div>
+                <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-4">
+                    <span class="tag">Blueteam</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">DevSecOps</span>
+                    <span class="tag">SOC</span>
+                    <span class="tag">Python</span>
+                </div>
+            </div>
+            <div class="relative hidden lg:block">
+                <div class="relative w-full aspect-square max-w-md mx-auto">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-cyber-accent/20 to-transparent rounded-full blur-3xl">
+                    </div>
+                    <!-- Logo image -->
+                    <div
+                        class="relative z-10 w-full h-full rounded-2xl bg-gray-800/50 border border-gray-700/50 overflow-hidden flex items-center justify-center p-8">
+                        <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.author.name }}"
+                            class="w-full h-full object-contain"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        <!-- Fallback if image doesn't exist -->
+                        <div class="w-full h-full items-center justify-center hidden" style="display: none;">
+                            <div class="text-center p-8">
+                                <div
+                                    class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-cyber-accent to-amber-600 flex items-center justify-center mb-4">
+                                    <span class="text-cyber-dark text-5xl font-bold font-mono">&lt;/&gt;</span>
+                                </div>
+                                <p class="text-gray-500 text-sm">Add your logo to assets/images/logo.png</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating elements -->
+                    <div
+                        class="absolute -top-4 -right-4 w-24 h-24 bg-cyber-accent/10 rounded-xl border border-cyber-accent/20 flex items-center justify-center animate-float">
+                        <svg class="w-10 h-10 text-cyber-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-cyber-accent/10 rounded-xl border border-cyber-accent/20 flex items-center justify-center animate-float"
+                        style="animation-delay: 1s;">
+                        <svg class="w-8 h-8 text-cyber-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+{% assign featured_projects = site.projects | where: "lang", "en" | where: "featured", true | sort: "date" | reverse %}
+<section class="section bg-gray-900/30">
+    <div class="container-custom">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-gradient mb-4">{{ t.home.featured.title }}</h2>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">{{ t.home.featured.subtitle }}</p>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid md:grid-cols-2 gap-6">
+            {% for project in featured_projects %}
+            <a href="{{ project.url }}" class="card glow-border group block">
+                <div
+                    class="aspect-video bg-gray-900/50 rounded-lg mb-4 overflow-hidden flex items-center justify-center relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyber-accent/5 to-transparent"></div>
+                    {% if project.image %}
+                    <img src="{{ project.image }}" alt="{{ project.title }}"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    {% else %}
+                    <svg class="w-16 h-16 text-cyber-accent/30 group-hover:text-cyber-accent/50 transition-colors"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        {% if project.category == 'defensive' %}
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        {% elsif project.category == 'offensive' %}
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M21 12h-2.5M5.5 12H3M12 5.5V3M12 21v-2.5" />
+                        {% elsif project.category == 'ai-ml' %}
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        {% elsif project.category == 'automation' %}
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        {% elsif project.category == 'infrastructure' %}
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                        {% else %}
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        {% endif %}
+                    </svg>
+                    {% endif %}
+                </div>
+                <h3 class="text-xl font-semibold mb-2 group-hover:text-cyber-accent transition-colors font-mono">
+                    {{ project.title }}
+                </h3>
+                <p class="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">
+                    {{ project.description }}
+                </p>
+                {% if project.tags %}
+                <div class="flex flex-wrap gap-2 mb-4">
+                    {% for tag in project.tags limit:3 %}
+                    <span class="tag text-xs">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="flex gap-4 pt-4 border-t border-gray-700/50">
+                    <span
+                        class="text-cyber-accent hover:text-amber-400 text-sm font-medium transition-colors flex items-center">
+                        {{ t.projects.view_project | default: "View project" }}
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+        <!-- View All Button -->
+        <div class="text-center mt-10">
+            <a href="{{ '/en/projects/' | relative_url }}" class="btn-secondary inline-flex items-center">
+                {{ t.home.featured.view_all }}
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Blog Post Section -->
+{% assign latest_post = site.posts | where: "lang", "en" | sort: "date" | reverse | first %}
+{% if latest_post %}
+<section class="section">
+    <div class="container-custom">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+            <h2 class="text-gradient mb-4">{{ t.blog.latest | default: "Latest Article" }}</h2>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                {{ t.blog.subtitle | default: "Check out my latest blog post" }}
+            </p>
+        </div>
+
+        <!-- Blog Card -->
+        <div class="max-w-4xl mx-auto">
+            <a href="{{ latest_post.url }}" class="card glow-border group block md:flex gap-8">
+                <!-- Image -->
+                <div
+                    class="md:w-1/3 aspect-video md:aspect-square bg-gray-900/50 rounded-lg overflow-hidden flex items-center justify-center relative mb-6 md:mb-0">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyber-accent/5 to-transparent"></div>
+                    {% if latest_post.image %}
+                    <img src="{{ latest_post.image }}" alt="{{ latest_post.title }}"
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    {% else %}
+                    <svg class="w-16 h-16 text-cyber-accent/30 group-hover:text-cyber-accent/50 transition-colors"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                    </svg>
+                    {% endif %}
+                </div>
+                <!-- Content -->
+                <div class="md:w-2/3 flex flex-col justify-center">
+                    <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-3">
+                        <time datetime="{{ latest_post.date | date: '%Y-%m-%d' }}">
+                            {{ latest_post.date | date: "%B %d, %Y" }}
+                        </time>
+                        <span>•</span>
+                        <span>{{ latest_post.reading_time | default: 5 }} {{ t.blog.min_read | default: "min read"
+                            }}</span>
+                        {% if latest_post.category %}
+                        <span>•</span>
+                        <span class="tag">{{ latest_post.category }}</span>
+                        {% endif %}
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 group-hover:text-cyber-accent transition-colors font-mono">
+                        {{ latest_post.title }}
+                    </h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">
+                        {{ latest_post.description }}
+                    </p>
+                    <div
+                        class="flex items-center text-cyber-accent hover:text-amber-400 text-sm font-medium transition-colors">
+                        {{ t.blog.read_more | default: "Read article" }}
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- View All Button -->
+        <div class="text-center mt-10">
+            <a href="{{ '/en/blog/' | relative_url }}" class="btn-secondary inline-flex items-center">
+                {{ t.blog.view_all | default: "All articles" }}
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}

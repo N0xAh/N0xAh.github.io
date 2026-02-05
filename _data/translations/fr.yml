@@ -1,0 +1,120 @@
+# =============================================================================
+# FRENCH TRANSLATIONS
+# =============================================================================
+
+# Navigation
+nav:
+  menu_label: "Menu"
+  items:
+    - name: "Accueil"
+      url: "/"
+    - name: "Projets"
+      url: "/projets/"
+    - name: "Blog"
+      url: "/blog/"
+    - name: "CV"
+      url: "/cv/"
+    - name: "Contact"
+      url: "/contact/"
+
+# Homepage
+home:
+  hero:
+    greeting: "Bonjour, je suis"
+    title: "Noah DAVID"
+    subtitle: "Étudiant en Master Cybersécurité"
+    description: "Passionné par la cybersécurité orientée défensive, l'automatisation et la finance."
+    cta_primary: "Voir mes projets"
+    cta_secondary: "Me contacter"
+  
+  featured:
+    title: "Projets en vedette"
+    subtitle: "Une sélection de mes travaux récents en cybersécurité et développement"
+    view_all: "Voir tous les projets"
+
+# Projects Page
+projects:
+  title: "Projets"
+  subtitle: "Découvrez mes réalisations en cybersécurité, analyse de données et développement"
+  filter_all: "Tous"
+  no_projects: "Aucun projet pour le moment."
+  view_project: "Voir le projet"
+  github_link: "Code source"
+  back_to_projects: "Retour aux projets"
+  view_source: "Voir le code"
+  view_demo: "Voir la démo"
+  technologies: "Technologies"
+
+# Blog Page
+blog:
+  title: "Blog"
+  subtitle: "Articles sur l'IA, la Cybersécurité et la Finance"
+  filter_all: "Tous"
+  no_posts: "Aucun article pour le moment."
+  read_more: "Lire la suite"
+  min_read: "min de lecture"
+
+# CV Page
+cv:
+  title: "Curriculum Vitae"
+  subtitle: "Mon parcours académique et professionnel"
+  download_button: "Télécharger le CV (PDF)"
+  experience_title: "Expériences"
+  education_title: "Formation"
+  skills_title: "Compétences"
+  certifications_title: "Certifications"
+
+# Contact Page
+contact:
+  title: "Contact"
+  subtitle: "Une question, une opportunité professionelle ou un projet ? N'hésitez pas à me contacter."
+  info:
+    title: "Informations"
+    email_label: "Email"
+    location_label: "Localisation"
+    location_value: "France • Suisse • International"
+    availability_label: "Disponibilité"
+    availability_value: "Ouvert aux opportunités"
+  
+  form:
+    name_label: "Nom complet"
+    name_placeholder: "John Doe"
+    email_label: "Email"
+    email_placeholder: "john.doe@gmail.com"
+    subject_label: "Sujet"
+    subject_placeholder: "Sélectionnez un sujet..."
+    subject_options:
+      - value: "emploi"
+        label: "Opportunité d'emploi"
+      - value: "projet"
+        label: "Proposition de projet"
+      - value: "question"
+        label: "Question générale"
+      - value: "autre"
+        label: "Autre"
+    message_label: "Message"
+    message_placeholder: "Décrivez votre demande..."
+    submit: "Envoyer le message"
+  
+  success:
+    title: "Message envoyé !"
+    message: "Merci pour votre message. Je vous répondrai dans les plus brefs délais."
+  
+  error:
+    title: "Erreur"
+    message: "Une erreur s'est produite. Veuillez réessayer ou me contacter directement par email."
+
+# Footer
+footer:
+  tagline: "Étudiant en Master Cybersécurité | Passionné par la sécurité et l'innovation"
+  links_title: "Navigation"
+  connect_title: "Réseaux"
+  rights: "Tous droits réservés."
+
+# Common
+common:
+  back: "Retour"
+  loading: "Chargement..."
+  tags: "Tags"
+  date: "Date"
+  share: "Partager"

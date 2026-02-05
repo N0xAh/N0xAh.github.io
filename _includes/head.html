@@ -1,0 +1,44 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Security Meta Headers -->
+<meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.n8n.cloud https://*.automate.example.com; frame-ancestors 'self'; form-action 'self'; base-uri 'self'">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=()">
+
+<!-- SEO & OpenGraph -->
+{% seo %}
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+<!-- Stylesheet -->
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/assets/images/favicon.png' | relative_url }}">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<!-- Alternate Languages -->
+{% assign current_path = page.url | remove_first: '/' | split: '/' %}
+{% if current_path[0] == 'fr' %}
+{% assign alt_path = page.url | replace: '/fr/', '/en/' %}
+<link rel="alternate" hreflang="en" href="{{ alt_path | absolute_url }}">
+<link rel="alternate" hreflang="fr" href="{{ page.url | absolute_url }}">
+{% elsif current_path[0] == 'en' %}
+{% assign alt_path = page.url | replace: '/en/', '/fr/' %}
+<link rel="alternate" hreflang="fr" href="{{ alt_path | absolute_url }}">
+<link rel="alternate" hreflang="en" href="{{ page.url | absolute_url }}">
+{% endif %}
+<link rel="alternate" hreflang="x-default" href="{{ '/fr/' | absolute_url }}">

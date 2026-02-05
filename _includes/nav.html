@@ -1,0 +1,113 @@
+{% assign lang = page.lang | default: site.lang | default: 'fr' %}
+{% assign t = site.data.translations[lang] %}
+
+<nav class="sticky top-0 z-50 bg-cyber-dark/95 backdrop-blur-sm border-b border-gray-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+
+            <!-- Logo / Name -->
+            <a href="{{ '/' | append: lang | append: '/' | relative_url }}" class="flex items-center space-x-2 group">
+                <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Logo" class="w-8 h-8 object-contain" />
+                <span class="font-semibold text-lg text-gray-100 group-hover:text-cyber-accent transition-colors">
+                    {{ site.author.name | default: "Portfolio" }}
+                </span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-1">
+                {% for item in t.nav.items %}
+                <a href="{{ '/' | append: lang | append: item.url | relative_url }}"
+                    class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-cyber-accent hover:bg-gray-800/50 transition-all duration-200 {% if page.url contains item.url %}text-cyber-accent bg-gray-800/30{% endif %}">
+                    {{ item.name }}
+                </a>
+                {% endfor %}
+
+                <!-- Language Switcher -->
+                <div class="ml-4 flex items-center space-x-2 border-l border-gray-700 pl-4">
+                    {% assign current_path = page.url | remove_first: '/' | split: '/' %}
+                    {% if lang == 'fr' %}
+                    <span class="text-cyber-accent font-medium text-sm">FR</span>
+                    <span class="text-gray-600">|</span>
+                    {% if page.layout == 'project' %}
+                    <a href="{{ '/en/projects/' | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 text-sm transition-colors">EN</a>
+                    {% elsif page.layout == 'post' %}
+                    <a href="{{ '/en/blog/' | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 text-sm transition-colors">EN</a>
+                    {% else %}
+                    {% assign en_path = page.url | replace: '/fr/', '/en/' | replace: '/projets/', '/projects/' %}
+                    <a href="{{ en_path | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 text-sm transition-colors">EN</a>
+                    {% endif %}
+                    {% else %}
+                    {% if page.layout == 'project' %}
+                    <a href="{{ '/fr/projets/' | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 text-sm transition-colors">FR</a>
+                    {% elsif page.layout == 'post' %}
+                    <a href="{{ '/fr/blog/' | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 text-sm transition-colors">FR</a>
+                    {% else %}
+                    {% assign fr_path = page.url | replace: '/en/', '/fr/' | replace: '/projects/', '/projets/' %}
+                    <a href="{{ fr_path | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 text-sm transition-colors">FR</a>
+                    {% endif %}
+                    <span class="text-gray-600">|</span>
+                    <span class="text-cyber-accent font-medium text-sm">EN</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn"
+                class="md:hidden p-2 rounded-lg text-gray-400 hover:text-gray-100 hover:bg-gray-800/50 transition-colors"
+                aria-label="{{ t.nav.menu_label | default: 'Menu' }}" aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+            <div class="flex flex-col space-y-1">
+                {% for item in t.nav.items %}
+                <a href="{{ '/' | append: lang | append: item.url | relative_url }}"
+                    class="px-4 py-3 rounded-lg text-gray-300 hover:text-cyber-accent hover:bg-gray-800/50 transition-all {% if page.url contains item.url %}text-cyber-accent bg-gray-800/30{% endif %}">
+                    {{ item.name }}
+                </a>
+                {% endfor %}
+
+                <!-- Mobile Language Switcher -->
+                <div class="flex items-center space-x-4 px-4 py-3 border-t border-gray-800 mt-2">
+                    {% if lang == 'fr' %}
+                    <span class="text-cyber-accent font-medium">Français</span>
+                    {% if page.layout == 'project' %}
+                    <a href="{{ '/en/projects/' | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 transition-colors">English</a>
+                    {% elsif page.layout == 'post' %}
+                    <a href="{{ '/en/blog/' | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 transition-colors">English</a>
+                    {% else %}
+                    {% assign en_path = page.url | replace: '/fr/', '/en/' | replace: '/projets/', '/projects/' %}
+                    <a href="{{ en_path | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 transition-colors">English</a>
+                    {% endif %}
+                    {% else %}
+                    {% if page.layout == 'project' %}
+                    <a href="{{ '/fr/projets/' | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 transition-colors">Français</a>
+                    {% elsif page.layout == 'post' %}
+                    <a href="{{ '/fr/blog/' | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 transition-colors">Français</a>
+                    {% else %}
+                    {% assign fr_path = page.url | replace: '/en/', '/fr/' | replace: '/projects/', '/projets/' %}
+                    <a href="{{ fr_path | relative_url }}"
+                        class="text-gray-400 hover:text-gray-100 transition-colors">Français</a>
+                    {% endif %}
+                    <span class="text-cyber-accent font-medium">English</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

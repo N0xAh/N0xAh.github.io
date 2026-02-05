@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'fr' }}">
+
+<head>
+  {% include head.html %}
+</head>
+
+<body class="bg-cyber-dark text-gray-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- Background Pattern -->
+  <div class="fixed inset-0 bg-nodes-pattern opacity-50 pointer-events-none z-0"></div>
+
+  <!-- Navigation -->
+  {% include nav.html %}
+
+  <!-- Main Content -->
+  <main class="flex-grow relative z-10">
+    {{ content }}
+  </main>
+
+  <!-- Footer -->
+  {% include footer.html %}
+
+
+  <!-- Mobile Menu Toggle Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function () {
+          mobileMenu.classList.toggle('hidden');
+          const isExpanded = !mobileMenu.classList.contains('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

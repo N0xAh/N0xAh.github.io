@@ -1,0 +1,34 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Node
+node_modules/
+package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Temp
+*.tmp
+*.temp
+
+# Contenu en cours de rédaction (à retirer quand prêt)
+_projects/
+_posts/
+
+# Fichiers privés
+GUIDE.md
+README.md

@@ -1,0 +1,83 @@
+---
+layout: default
+---
+
+{% assign lang = page.lang | default: site.lang | default: 'fr' %}
+{% assign t = site.data.translations[lang] %}
+
+<article class="section">
+    <div class="container-custom max-w-4xl">
+        <!-- Back button -->
+        <a href="{% if lang == 'en' %}/en/blog/{% else %}/fr/blog/{% endif %}"
+            class="inline-flex items-center text-gray-400 hover:text-cyber-accent transition-colors mb-8 group">
+            <svg class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            {{ t.common.back }}
+        </a>
+
+        <!-- Article Header -->
+        <header class="mb-12">
+            <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-4">
+                <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
+                    {{ page.date | date: "%d %B %Y" }}
+                </time>
+                <span>•</span>
+                <span>{{ page.reading_time | default: 5 }} {{ t.blog.min_read }}</span>
+                {% if page.category %}
+                <span>•</span>
+                <span class="tag">{{ page.category }}</span>
+                {% endif %}
+            </div>
+            <h1 class="text-gradient text-4xl md:text-5xl mb-6">{{ page.title }}</h1>
+            {% if page.description %}
+            <p class="text-xl text-gray-400">{{ page.description }}</p>
+            {% endif %}
+        </header>
+
+        <!-- Featured Image -->
+        {% if page.image %}
+        <div class="aspect-video rounded-xl overflow-hidden mb-12 border border-gray-800">
+            <img src="{{ page.image }}" alt="{{ page.title }}" class="w-full h-full object-cover">
+        </div>
+        {% endif %}
+
+        <!-- Article Content -->
+        <div class="prose prose-invert prose-lg max-w-none prose-readable
+                    prose-headings:font-mono prose-headings:text-cyber-accent
+                    prose-a:text-cyber-accent prose-a:no-underline hover:prose-a:underline
+                    prose-code:text-cyber-accent prose-code:bg-gray-800 prose-code:px-2 prose-code:py-1 prose-code:rounded
+                    prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-800
+                    prose-blockquote:border-l-cyber-accent prose-blockquote:text-gray-400
+                    prose-img:rounded-lg prose-img:border prose-img:border-gray-800">
+            {{ content }}
+        </div>
+
+        <!-- Tags -->
+        {% if page.tags and page.tags.size > 0 %}
+        <div class="mt-12 pt-8 border-t border-gray-800">
+            <h4 class="text-gray-500 text-sm mb-4">{{ t.common.tags }}</h4>
+            <div class="flex flex-wrap gap-2">
+                {% for tag in page.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Author Section -->
+        <div class="mt-12 p-6 card glow-border">
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-16 h-16 rounded-full bg-gradient-to-br from-cyber-accent to-cyber-accent-dark flex items-center justify-center text-cyber-dark text-2xl font-bold">
+                    {{ site.author.name | slice: 0 }}
+                </div>
+                <div>
+                    <p class="font-semibold text-gray-100">{{ site.author.name }}</p>
+                    <p class="text-gray-400 text-sm">{{ t.footer.tagline }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

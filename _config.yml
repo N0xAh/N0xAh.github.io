@@ -1,0 +1,105 @@
+# Site Configuration
+title: "Noah David - Portfolio"
+description: "Portfolio d'un étudiant en Master Cybersécurité défensive passionné par l'automatisation et la finance - Projets, Articles, CV"
+author:
+  name: "Noah DAVID"
+  email: "noah.david1@proton.me"
+  linkedin: "https://www.linkedin.com/in/noah-david1/"
+  github: "https://github.com/N0xAh"
+
+baseurl: ""
+url: "https://N0xAh.github.io"
+
+# Build Configuration
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:year/:month/:day/:title/
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - postcss.config.js
+  - README.md
+  - GUIDE.md
+  - prompt.md
+  - .git
+  - .gitignore
+  - vendor
+
+include:
+  - _headers
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# SEO Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-default.png
+  - scope:
+      path: "fr"
+    values:
+      lang: "fr"
+  - scope:
+      path: "en"
+    values:
+      lang: "en"
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:name/
+
+# Posts and Projects permalinks
+defaults:
+  - scope:
+      path: "_posts/fr"
+      type: "posts"
+    values:
+      lang: "fr"
+      permalink: /fr/blog/:year/:month/:day/:title/
+  - scope:
+      path: "_posts/en"
+      type: "posts"
+    values:
+      lang: "en"
+      permalink: /en/blog/:year/:month/:day/:title/
+  - scope:
+      path: "_projects/fr"
+      type: "projects"
+    values:
+      lang: "fr"
+      permalink: /fr/projets/:name/
+  - scope:
+      path: "_projects/en"
+      type: "projects"
+    values:
+      lang: "en"
+      permalink: /en/projects/:name/
+
+# Multilingual
+lang: fr
+languages:
+  - fr
+  - en
+
+language_names:
+  fr: "Français"
+  en: "English"
+
+# Contact Form (n8n)
+n8n_form_url: "https://flushia-n8n.cloud/form/portfolio-contact-form"
+
+# Assets
+sass:
+  style: compressed
